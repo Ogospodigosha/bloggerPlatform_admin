@@ -1,10 +1,18 @@
 import React, {useEffect} from 'react';
 import {Box, Button,  Divider, Toolbar} from "@mui/material";
 import s from './BlogsContent.module.css'
+import {useSelector} from "react-redux";
+import {AsyncBlogsActions, BlogsSelector} from "../../index";
+import {useActions} from "../../../../utils/useAction";
+import {BlogsList} from "../blogsList/BlogsList";
 
 
 export const BlogsContent = () => {
-    useEffect(()=>{},[])
+    const blogs = useSelector(BlogsSelector.selectBlogs)
+    const {fetchBlogs} = useActions(AsyncBlogsActions)
+    useEffect(()=>{
+        fetchBlogs()
+    },[])
     return (
         <Box component="main" sx={{flexGrow: 1, p: 3, backgroundColor: "#FAF7F8", minHeight: "100vh"}}>
             <Toolbar/>
@@ -16,6 +24,7 @@ export const BlogsContent = () => {
                     marginBottom: '29px'
                 }}>Add blog</Button>
             </div>
+            <BlogsList items={blogs.items}/>
         </Box>
     );
 };
