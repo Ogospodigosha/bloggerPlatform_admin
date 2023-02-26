@@ -1,13 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Box, Button,  Divider, Toolbar} from "@mui/material";
 import s from './BlogsContent.module.css'
 
 
-
-
-
-
 export const BlogsContent = () => {
+    useEffect(()=>{},[])
     return (
         <Box component="main" sx={{flexGrow: 1, p: 3, backgroundColor: "#FAF7F8", minHeight: "100vh"}}>
             <Toolbar/>
