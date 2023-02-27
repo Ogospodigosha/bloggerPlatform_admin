@@ -10,23 +10,23 @@ import {BlogsList} from "../blogsList/BlogsList";
 export const BlogsContent = () => {
     const blogs = useSelector(BlogsSelector.selectBlogs)
     const {fetchBlogs} = useActions(AsyncBlogsActions)
+    const addBlog = ()=>{}
     useEffect(() => {
         fetchBlogs()
     }, [])
     return (
-        <Box component="main" sx={{flexGrow: 1, p: 3, backgroundColor: "#FAF7F8", minHeight: "100vh"}}>
+        <Box component="main" sx={{flexGrow: 1, p: 3, backgroundColor: "#FAF7F8", minHeight: "100vh"}} className={s.box}>
             <Toolbar/>
-            <div className={s.header}>Blogs</div>
+                <div className={s.header}>Blogs</div>
             <Divider sx={{marginBottom: '23px'}}/>
             <div className={s.btnFlex}>
                 <Button variant={'contained'} sx={{
                     marginRight: '64px',
                     "&.MuiButton-containedPrimary": {backgroundColor: '#F8346B'},
                     marginBottom: '29px'
-                }}>Add blog</Button>
+                }} onClick={addBlog}>Add blog</Button>
             </div>
             <div style={{display: 'flex'}}>
-                <div className={s.widthDrawer}></div>
                 <BlogsList items={blogs.items}/>
             </div>
         </Box>

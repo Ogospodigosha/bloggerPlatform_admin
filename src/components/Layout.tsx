@@ -23,8 +23,11 @@ export const Layout = () => {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <CustomDrawer/>
-            <Outlet/>
+            <div style={{display: 'flex'}}>
+                <CustomDrawer/>
+              <div style={{width: '100%'}}><Outlet/></div>
+            </div>
+
         </>
     );
 };

@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import {Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar} from "@mui/material";
 import ListIcon from "@mui/icons-material/List";
 import GridViewIcon from "@mui/icons-material/GridView";
+import { useNavigate } from 'react-router-dom';
 
 export const CustomDrawer = () => {
+    const navigate = useNavigate()
     const drawerWidth = 252;
     const [selectedIndex, setSelectedIndex] = useState(0);
     const handleListItemClick = (
@@ -13,7 +15,7 @@ export const CustomDrawer = () => {
     ) => {
         setSelectedIndex(index);
         if (text === 'Blogs') {
-            // navigate('/blogs')
+            navigate('/blogs')
         } else if (text === 'Posts') {
             // navigate('/posts')
         }

@@ -10,7 +10,12 @@
     display: flex;
     justify-content: flex-end;
 }
-.widthDrawer {
-    width: 252px;
-    margin-left: 24px;
+
+.flex {
+    display: flex;
+
+}
+.box {
+    min-width: 1340px;
+
 }

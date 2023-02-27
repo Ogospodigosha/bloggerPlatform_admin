@@ -5,11 +5,10 @@ import {BlogsContent} from "./blogsContent/BlogsContent";
 
 export const BlogsPage = () => {
     return (
-        <Box sx={{display: 'flex'}}>
+        <div >
             <CssBaseline/>
-            <div style={{width:'252px'}}></div>
             <BlogsContent/>
-        </Box>
+        </div>
     );
 };
 
