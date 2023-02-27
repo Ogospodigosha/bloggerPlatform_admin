@@ -9,7 +9,7 @@ type PropsType={
 
 export const BlogsList:React.FC<PropsType> = ({items}) => {
     return (
-        <List sx={{width: '100%'  }} >
+        <List  >
             {items?.map(el =>
                 <>
                     <ListItem alignItems="flex-start" key={el.id} >
@@ -17,7 +17,7 @@ export const BlogsList:React.FC<PropsType> = ({items}) => {
                             <div className={s.avatar}><img className={s.img} /></div>
                         </ListItemAvatar>
                         <div className={s.div}>
-                            <div className={s.blogName}  >{el.name}</div>
+                            <div className={s.blogName} >{el.name}</div>
                             <div className={s.website}>Website:<a className={s.link} href={el.websiteUrl}>{el.websiteUrl}</a></div>
                             <div className={s.description}>{el.description}</div>
                         </div>

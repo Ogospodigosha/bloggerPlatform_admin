@@ -37,3 +37,7 @@
 .div {
     margin-right: 15px;
 }
+.list {
+   width:  calc(100% - 252px);
+    /*margin-left: 150px;*/
+}
