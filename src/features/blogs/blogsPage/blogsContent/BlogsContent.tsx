@@ -5,12 +5,16 @@ import {useSelector} from "react-redux";
 import {AsyncBlogsActions, BlogsSelector} from "../../index";
 import {useActions} from "../../../../utils/useAction";
 import {BlogsList} from "../blogsList/BlogsList";
+import { useNavigate } from 'react-router-dom';
 
 
 export const BlogsContent = () => {
     const blogs = useSelector(BlogsSelector.selectBlogs)
     const {fetchBlogs} = useActions(AsyncBlogsActions)
-    const addBlog = ()=>{}
+    const navigate = useNavigate()
+    const addBlog = ()=>{
+        navigate('/blog/add')
+    }
     useEffect(() => {
         fetchBlogs()
     }, [])

@@ -1,0 +1,31 @@
+.header {
+    color: #1A1718;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-top: 29px;
+    margin-bottom: 7px;
+}
+.nameBlog {
+    color: #1A1718;
+    font-size: 12px;
+    line-height: 16px
+}
+.link {
+    text-decoration: none;
+    color:#1A1718;
+    font-size:14px;
+    line-height: 24px;
+    font-weight: 400
+}
+.flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.colorIcon {
+    color: black;
+}
+.margin {
+    margin-left: 13px;
+}

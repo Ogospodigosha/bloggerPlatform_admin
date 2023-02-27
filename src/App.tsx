@@ -4,7 +4,8 @@ import './App.css';
 import {Route, Routes} from "react-router-dom";
 import {BlogsPage} from "./features/blogs/blogsPage/BlogsPage";
 import {Layout} from "./components/Layout";
-import {AddBlog} from "./features/blogs/blogsPage/addBlog/AddBlog";
+import {AddBlogPage} from "./features/blogs/addBlogPage/AddBlogPage";
+
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
             <Route path={'/'} element={<Layout/>}>
                 <Route index element={<BlogsPage/>}/>
                 <Route path={'/blogs'} element={<BlogsPage/>}/>
-                <Route path={'/blog/add'} element={<AddBlog/>}/>
+                <Route path={'/blog/add'} element={<AddBlogPage/>}/>
             </Route>
         </Routes>
     </>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, CssBaseline} from "@mui/material";
+import { CssBaseline} from "@mui/material";
 import {BlogsContent} from "./blogsContent/BlogsContent";
 
 
