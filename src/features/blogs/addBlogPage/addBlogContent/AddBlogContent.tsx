@@ -53,14 +53,16 @@ export const AddBlogContent = () => {
                        if (!values.name) {
                            errors.name = 'Required';
                        }
+
+                       if (!values.websiteUrl) {
+                           errors.websiteUrl = 'Required'
+                       } else if (/^https?:\/\/(?:www\.)?[A-Z0-9._%+-]+[A-Z0-9.-]+\.[A-Z]{2,4}.[A-Z]{2,4}$/i.test(values.websiteUrl))
+                           errors.websiteUrl = 'websiteUrl must be a URL address'
+
                        if (!values.description) {
                            errors.description = 'Required';
                        }
-                       if (!values.websiteUrl) {
-                           errors.websiteUrl = 'Required'
-                       }
-                       // else if ()
-                       //     errors.websiteUrl = 'websiteUrl must be a URL address'
+
                         return errors
                    }}
                    onSubmit={(values, actions) => {
