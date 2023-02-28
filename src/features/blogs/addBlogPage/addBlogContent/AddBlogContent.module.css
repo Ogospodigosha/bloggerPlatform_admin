@@ -29,3 +29,10 @@
 .margin {
     margin-left: 13px;
 }
+.error {
+    position: absolute;
+
+    font-size: 12px;
+    color: indianred;
+    text-align: end;
+}

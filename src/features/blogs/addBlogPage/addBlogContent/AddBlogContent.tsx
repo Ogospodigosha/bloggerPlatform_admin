@@ -8,13 +8,6 @@ import {AddBlogForm} from "./addBlogForm/AddBlogForm";
 
 
 
-export type FormikErrorType = {
-    name?: string
-    description?: string
-    websiteUrl?: string
-}
-
-
 export const AddBlogContent = () => {
     return (
         <Box component="main" sx={{flexGrow: 1, p: 3, backgroundColor: "#FAF7F8", minHeight: "100vh"}} className={s.box}>

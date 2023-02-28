@@ -1,28 +1,27 @@
 import React from 'react';
-import {useField} from "formik";
 import {TextField} from "@mui/material";
+import {useField} from "formik";
+import  s from './WebsiteInputForm.module.css'
 
-
-type EmailInputFormType = {
+type WebsiteInputFormType = {
     label: string
     name: string
 
 }
 
-export const NameInputForm: React.FC<EmailInputFormType> = ({label, name}) => {
+export const WebsiteInputForm:React.FC<WebsiteInputFormType> = ({name, label}) => {
     const [field, meta] = useField(name)
     return (
         <>
             <TextField
-                // className={s.field}
                 label={label}
+                fullWidth
                 variant={'standard'}
                 margin={'normal'}
                 // disabled={IsLoading === 'loading'}
                 {...field}
             />
-            {/*/!*{errors.name && touched.name && errors.name}*!/ className={s.error}*/}
-            {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+            {meta.touched && meta.error ? <div className={s.error}>{meta.error}</div> : null}
         </>
     );
 };

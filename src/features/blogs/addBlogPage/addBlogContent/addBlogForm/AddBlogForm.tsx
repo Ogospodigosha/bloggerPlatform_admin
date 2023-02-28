@@ -2,9 +2,9 @@ import React from 'react';
 import {Form, Formik} from "formik";
 import {formValidate} from "./formValidate";
 import {Button, FormGroup} from "@mui/material";
-import {NameInputForm} from "./NameInputForm";
-import {WebsiteInputForm} from "./WebsiteInputForm";
-import {DescriptionInputForm} from "./DescriptionInputForm";
+import {NameInputForm} from "./nameInputForm/NameInputForm";
+import {WebsiteInputForm} from "./websiteInputForm/WebsiteInputForm";
+import {DescriptionInputForm} from "./descriptionInputForm/DescriptionInputForm";
 import {useActions} from "../../../../../utils/useAction";
 import {AsyncBlogsActions} from "../../../index";
 
@@ -18,20 +18,18 @@ export const AddBlogForm = () => {
                     onSubmit={(values, actions) => {
                         debugger
                         if (values.name && values.websiteUrl && values.description)
-                            // dispatch(registrationTC(values.email, values.password))
                             addBlog({name: values.name, websiteUrl: values.websiteUrl, description: values.description})
-                            console.log('123123')
                     }}
             >
                 <Form>
                     <FormGroup>
-                        <div style={{ position: 'relative' }}>
+                        <div style={{ position: 'relative', marginBottom:'24px' }}>
                             <NameInputForm name={'name'} label="name"  />
                         </div>
-                        <div style={{ position: 'relative' }}>
+                        <div style={{ position: 'relative', marginBottom:'24px' }}>
                             <WebsiteInputForm name={'websiteUrl'} label={'websiteUrl'}  />
                         </div>
-                        <div style={{ position: 'relative' }}>
+                        <div style={{ position: 'relative', marginBottom:'24px' }}>
                             <DescriptionInputForm
                                 label={'description'}
                                 name={'description'}
