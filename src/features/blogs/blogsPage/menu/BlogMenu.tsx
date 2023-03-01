@@ -25,12 +25,12 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
+
         setAnchorEl(null);
     };
-    const onclickHandler = (name: string)=>{
+    const onclickHandler = (id: string)=>{
         debugger
-        navigate(`/blog/edit/${name}`)
-        // console.log(name)
+        navigate(`/blog/edit/${id}`)
     }
     return (
         <>
@@ -83,7 +83,7 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
                                 </div>
                             </MenuItem>
                             <MenuItem>
-                                <div style={{display:'flex'}} onClick={()=>onclickHandler(el.name)}>
+                                <div style={{display:'flex'}} onClick={()=>onclickHandler(el.id)}>
                                     <ModeEditOutlineOutlinedIcon fontSize={'medium'} style={{marginRight: '17px'}} />
                                     <div>Edit</div>
                                 </div>
@@ -95,7 +95,7 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
                 <div className={s.description}>{el.description}</div>
             </div>
         </ListItem>
-    <Divider variant="fullWidth"/>
+    <Divider variant="fullWidth" key={el.name}/>
         </> );
 };
 

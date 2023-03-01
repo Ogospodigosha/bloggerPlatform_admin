@@ -33,9 +33,11 @@ const addBlog = createAsyncThunk('blogs/addBlogBlogs', async (param:{name:string
         return rejectWithValue(null)
     }
 })
+
 export const asyncActions = {
     fetchBlogs,
-    addBlog
+    addBlog,
+
 }
 const initialState = {} as BlogsResponseType
 export const slice = createSlice({
@@ -51,6 +53,7 @@ export const slice = createSlice({
                 state.items.push(action.payload.blog)
             }
         });
+
     },
 })
 export const blogsReducer = slice.reducer

@@ -6,15 +6,16 @@ import  s from './NameInputForm.module.css'
 type EmailInputFormType = {
     label: string
     name: string
-
 }
 
 export const NameInputForm: React.FC<EmailInputFormType> = ({label, name}) => {
     const [field, meta] = useField(name)
+
     return (
         <>
             <TextField
                 fullWidth
+                // focused={true}
                 label={label}
                 variant={'standard'}
                 margin={'normal'}

@@ -12,11 +12,15 @@ export const DescriptionInputForm:React.FC<DescriptionInputFormType> = ({name, l
     return (
         <>
             <TextField
+                // InputLabelProps={{ shrink: true }}
                 label={label}
+                // focused={true}
                 fullWidth
                 margin={'normal'}
                 // disabled={IsLoading === 'loading'}
+                size={'medium'}
                 {...field}
+
             />
             {meta.touched && meta.error ? <div className={s.error}>{meta.error}</div> : null}
         </>

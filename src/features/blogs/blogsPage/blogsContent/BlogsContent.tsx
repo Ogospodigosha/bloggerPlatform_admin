@@ -31,7 +31,7 @@ export const BlogsContent = () => {
                 }} onClick={addBlog}>Add blog</Button>
             </div>
             <div style={{display: 'flex'}}>
-                <BlogsList items={blogs.items}/>
+                <BlogsList items={blogs.items} />
             </div>
         </Box>
     );

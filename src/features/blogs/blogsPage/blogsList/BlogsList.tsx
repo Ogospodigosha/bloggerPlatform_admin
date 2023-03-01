@@ -14,7 +14,7 @@ export const BlogsList:React.FC<PropsType> = ({items}) => {
         <List style={{marginRight: '64px', width: '100%' }}>
             {items?.map(el =>
                 <>
-                    <BlogMenu el={el}/>
+                    <BlogMenu el={el} key={el.id}/>
                 </>)}
         </List>
     );

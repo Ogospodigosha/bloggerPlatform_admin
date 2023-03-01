@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextField} from "@mui/material";
+import {styled, TextField} from "@mui/material";
 import {useField} from "formik";
 import  s from './WebsiteInputForm.module.css'
 
@@ -9,11 +9,24 @@ type WebsiteInputFormType = {
 
 }
 
+
+
+
 export const WebsiteInputForm:React.FC<WebsiteInputFormType> = ({name, label}) => {
+    // const style = {
+    //     "& .MuiOutlinedInput-root": {
+    //         "&.Mui-focused fieldset": {
+    //             color: "red"
+    //         }
+    //     }
+    // }
     const [field, meta] = useField(name)
     return (
         <>
             <TextField
+
+                // focused={true}
+
                 label={label}
                 fullWidth
                 variant={'standard'}

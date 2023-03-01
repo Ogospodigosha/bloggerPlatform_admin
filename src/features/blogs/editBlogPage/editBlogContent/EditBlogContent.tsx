@@ -1,13 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Box, Breadcrumbs, Divider, Link, Toolbar} from "@mui/material";
 import s from "../../addBlogPage/addBlogContent/AddBlogContent.module.css";
 import {NavLink, useParams} from "react-router-dom";
 import WestIcon from "@mui/icons-material/West";
+import {useSelector} from "react-redux";
+import {AsyncBlogActions, BlogsSelector} from "../../index";
+import {useActions} from "../../../../utils/useAction";
+import {EditBlogForm} from "./editBlogForm/EditBlogForm";
 
 
 export const EditBlogContent = () => {
-    const {blogName} = useParams()
+    const blog = useSelector(BlogsSelector.selectBlog)
 
+    const {fetchBlog} = useActions(AsyncBlogActions)
+    const {blogId} = useParams()
+    useEffect(()=>{
+        if (blogId) {
+            fetchBlog({id: blogId})
+        }
+    },[])
     return (
         <Box component="main" sx={{flexGrow: 1, p: 3, backgroundColor: "#FAF7F8", minHeight: "100vh"}} className={s.box}>
             <Toolbar/>
@@ -16,7 +27,7 @@ export const EditBlogContent = () => {
                     Blogs
                 </Link>
                 <Link underline="none" color="black" className={s.nameBlog}>
-                    {blogName}
+                    {blog.name}
                 </Link>
                 <Link underline="none" color="black" className={s.nameBlog}>
                     Edit
@@ -30,7 +41,7 @@ export const EditBlogContent = () => {
                 </div>
             </NavLink>
             <div style={{width: '100%', height: '312px', backgroundColor: 'white', marginBottom: '24px'}}></div>
-            {/*<AddBlogForm/>*/}
+            {blog ? <EditBlogForm blog={blog} /> : ''}
         </Box>
     );
 };
