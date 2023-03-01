@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {BlogsApi, BlogsResponseType} from "../../../api/BlogsApi";
 import {SetAppStatus} from "../../../app/app-reducer";
+import {handleServerNetworkError} from "../../../utils/handleServerNetworkError";
 
 const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async (param, {
     dispatch,
@@ -13,6 +14,7 @@ const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async (param, {
         dispatch(SetAppStatus({status: 'succeeded'}))
         return {blogs: res.data}
     } catch (e) {
+        handleServerNetworkError(e, dispatch)
         return rejectWithValue(null)
     }
 })
@@ -27,6 +29,7 @@ const addBlog = createAsyncThunk('blogs/addBlogBlogs', async (param:{name:string
         dispatch(SetAppStatus({status: 'succeeded'}))
         return {blog: res.data}
     } catch (e) {
+        handleServerNetworkError(e, dispatch)
         return rejectWithValue(null)
     }
 })

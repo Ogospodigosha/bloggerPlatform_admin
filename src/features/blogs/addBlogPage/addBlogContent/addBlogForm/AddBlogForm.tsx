@@ -7,10 +7,12 @@ import {WebsiteInputForm} from "./websiteInputForm/WebsiteInputForm";
 import {DescriptionInputForm} from "./descriptionInputForm/DescriptionInputForm";
 import {useActions} from "../../../../../utils/useAction";
 import {AsyncBlogsActions} from "../../../index";
+import {useNavigate} from "react-router-dom";
 
 export const AddBlogForm = () => {
     const initialValues = {name: '', description:'', websiteUrl: ''}
     const {addBlog} = useActions(AsyncBlogsActions)
+    const navigate = useNavigate()
     return (
         <>
             <Formik initialValues={initialValues}

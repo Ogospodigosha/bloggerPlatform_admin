@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React  from 'react';
 import {
     AppBar,
     CssBaseline, LinearProgress,
@@ -10,15 +10,16 @@ import {Outlet} from "react-router-dom";
 import {CustomDrawer} from "../CustomDrawer";
 import {useSelector} from "react-redux";
 import {appSelectors} from "./index";
+import {CustomizedSnackbars} from "../customizedSnackbars/CustomizedSnackbars";
 
 
 
 export const Layout = () => {
-    const [selectedIndex, setSelectedIndex] = useState(0);
     const appStatus = useSelector(appSelectors.selectAppStatus)
     return (
         <>
             <CssBaseline/>
+            <CustomizedSnackbars/>
             <AppBar position="fixed" color={"default"} sx={{zIndex: (theme) => theme.zIndex.drawer + 1}}>
                 <div style={{height: '2px'}}>
                     {appStatus === "loading" && <LinearProgress color={'secondary'} />}
