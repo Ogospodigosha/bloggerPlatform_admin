@@ -6,7 +6,6 @@ import {Dispatch} from "redux";
 
 export const handleServerNetworkError = (e: any, dispatch: ErrorUtilsDispatchType) => {
     const error = e as Error | AxiosError<{ error: string}>
-    console.log(error)
     // @ts-ignore
     dispatch(SetAppError(error.message ? {error: error.response.data.errorsMessages[0].message} : {error: 'Some error occurred'}))
     dispatch(SetAppStatus({status: 'failed'}))

@@ -5,7 +5,7 @@ export const formValidate = (values: FormikErrorType): FormikErrorType => {
     }
     if (!values.websiteUrl) {
         errors.websiteUrl = 'Required'
-    } else if ( /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(values.websiteUrl))
+    } else if (/^https?:\/\/(?:www\.)?[A-Z0-9._%+-]+[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.websiteUrl))
         errors.websiteUrl = 'websiteUrl must be a URL address'
     if (!values.description) {
         errors.description = 'Required';
