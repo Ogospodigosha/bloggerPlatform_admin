@@ -1,15 +1,16 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {BlogsApi, BlogsResponseType} from "../../../api/BlogsApi";
+import {SetAppStatus} from "../../../app/app-reducer";
 
 const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async (param, {
     dispatch,
     rejectWithValue
 }) => {
     debugger
-    // dispatch(setAppStatus({status: 'loading'}))
+    dispatch(SetAppStatus({status: 'loading'}))
     try {
         const res = await BlogsApi.getBlogs()
-        // dispatch(setAppStatus({status: 'succeeded'}))
+        dispatch(SetAppStatus({status: 'succeeded'}))
         return {blogs: res.data}
     } catch (e) {
         return rejectWithValue(null)
@@ -20,10 +21,10 @@ const addBlog = createAsyncThunk('blogs/addBlogBlogs', async (param:{name:string
     rejectWithValue
 }) => {
     debugger
-    // dispatch(setAppStatus({status: 'loading'}))
+    dispatch(SetAppStatus({status: 'loading'}))
     try {
         const res = await BlogsApi.createBlog( param.name,param.description,param.websiteUrl)
-        // dispatch(setAppStatus({status: 'succeeded'}))
+        dispatch(SetAppStatus({status: 'succeeded'}))
         return {blog: res.data}
     } catch (e) {
         return rejectWithValue(null)

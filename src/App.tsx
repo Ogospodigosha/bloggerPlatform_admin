@@ -3,7 +3,7 @@ import './App.css';
 
 import {Route, Routes} from "react-router-dom";
 import {BlogsPage} from "./features/blogs/blogsPage/BlogsPage";
-import {Layout} from "./components/Layout";
+import {Layout} from "./components/layout/Layout";
 import {AddBlogPage} from "./features/blogs/addBlogPage/AddBlogPage";
 
 
