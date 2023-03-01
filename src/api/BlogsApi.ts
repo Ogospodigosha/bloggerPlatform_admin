@@ -6,7 +6,7 @@ const instance = axios.create ({
     withCredentials: true,
 })
 const config = {
-    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwNSwiaWF0IjoxNjc3Njc1NDIyLCJleHAiOjE2Nzc3MTE0MjJ9.9oIO6p3UXCIzdv1mFW2M1yMlUUJGYOVQ1J9OSiLjDqY` }
+    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwNSwiaWF0IjoxNjc3NjgxODQ4LCJleHAiOjE2Nzc3MTc4NDh9.RWIOxWCX01OUZEkdjaqLPEWz2ZYQU8ifFg16X6lAvbs` }
 };
 
 export const BlogsApi = {

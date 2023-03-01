@@ -11,7 +11,7 @@ type PropsType={
 export const BlogsList:React.FC<PropsType> = ({items}) => {
 
     return (
-        <List style={{marginRight: '64px'}}>
+        <List style={{marginRight: '64px', width: '100%' }}>
             {items?.map(el =>
                 <>
                     <BlogMenu el={el}/>

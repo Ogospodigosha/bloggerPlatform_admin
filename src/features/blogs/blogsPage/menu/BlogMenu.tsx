@@ -6,6 +6,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import s from '../blogsList/BlogList.module.css'
 import {BlogType} from "../../../../api/BlogsApi";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -19,15 +20,21 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
     const ITEM_HEIGHT = 48;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+    const navigate = useNavigate()
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const onclickHandler = (name: string)=>{
+        debugger
+        navigate(`/blog/edit/${name}`)
+        // console.log(name)
+    }
     return (
         <>
-        <ListItem alignItems="flex-start" key={el.id} >
+        <ListItem alignItems="flex-start" key={el.id}  >
             <ListItemAvatar>
                 <div className={s.avatar}><img className={s.img} /></div>
             </ListItemAvatar>
@@ -76,7 +83,7 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
                                 </div>
                             </MenuItem>
                             <MenuItem>
-                                <div style={{display:'flex'}}>
+                                <div style={{display:'flex'}} onClick={()=>onclickHandler(el.name)}>
                                     <ModeEditOutlineOutlinedIcon fontSize={'medium'} style={{marginRight: '17px'}} />
                                     <div>Edit</div>
                                 </div>
