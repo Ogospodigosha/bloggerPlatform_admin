@@ -6,7 +6,7 @@ const instance = axios.create ({
     withCredentials: true,
 })
 const config = {
-    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIyLCJpYXQiOjE2Nzc4NjgzMDAsImV4cCI6MTY3NzkwNDMwMH0.uO4PcLbE7XyugdngAqPZ9dmHw1ZpyH6s_JwJjDhdD3o` }
+    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIyLCJpYXQiOjE2Nzc4NjkxOTgsImV4cCI6MTY3NzkwNTE5OH0.my0dye3p3dOdeu7edVcE3iVZezZPYeYJwyDkKOfvGU4` }
 };
 
 export const BlogsApi = {
@@ -23,7 +23,7 @@ export const BlogsApi = {
         return instance.put(`/blogger/blogs/${id}`, {name, description, websiteUrl}, config)
     },
     deleteBlog(id: string) {
-        return instance.put(`/blogger/blogs/${id}`, config)
+        return instance.delete(`/blogger/blogs/${id}`, config)
     }
 }
 

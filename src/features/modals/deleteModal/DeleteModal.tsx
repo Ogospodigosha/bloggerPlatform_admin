@@ -1,6 +1,8 @@
 import React from 'react';
 import {BasicModal} from "../basicModal/BasicModal"
 import s from './DeleteModal.module.css'
+import {useActions} from "../../../utils/useAction";
+import {AsyncBlogsActions} from "../../blogs";
 
 type PropsType = {
     setOpenModal: (openModal: boolean)=>void
@@ -9,8 +11,10 @@ type PropsType = {
 }
 
 export const DeleteModal:React.FC<PropsType> = ({openModal, setOpenModal, deleteId}) => {
+    const {removeBlog} = useActions(AsyncBlogsActions)
     const deleteBlog =()=>{
-
+        removeBlog({id:deleteId})
+        setOpenModal(false)
     }
     const cancelHandler =()=>{
         setOpenModal(false)
