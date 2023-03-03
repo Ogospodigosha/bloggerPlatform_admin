@@ -17,7 +17,7 @@ export const CustomDrawer = () => {
         if (text === 'Blogs') {
             navigate('/blogs')
         } else if (text === 'Posts') {
-            // navigate('/posts')
+            navigate('/posts')
         }
     }
     return (
