@@ -22,10 +22,11 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
     const open = Boolean(anchorEl);
     const navigate = useNavigate()
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        event.stopPropagation()
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
-
+    const handleClose = (event: React.MouseEvent<HTMLElement>) => {
+            event.stopPropagation()
         setAnchorEl(null);
     };
     const onclickHandler = (id: string)=>{
@@ -82,10 +83,12 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
                                     <div>Delete</div>
                                 </div>
                             </MenuItem>
-                            <MenuItem>
-                                <div style={{display:'flex'}} onClick={()=>onclickHandler(el.id)}>
-                                    <ModeEditOutlineOutlinedIcon fontSize={'medium'} style={{marginRight: '17px'}} />
-                                    <div>Edit</div>
+                            <MenuItem onClick={()=>onclickHandler(el.id)}>
+                                <div style={{display:'flex'}} >
+                                    <>
+                                        <ModeEditOutlineOutlinedIcon fontSize={'medium'} style={{marginRight: '17px'}} />
+                                        <div>Edit</div>
+                                    </>
                                 </div>
                             </MenuItem>
                         </Menu>

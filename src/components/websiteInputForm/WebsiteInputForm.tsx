@@ -13,20 +13,11 @@ type WebsiteInputFormType = {
 
 
 export const WebsiteInputForm:React.FC<WebsiteInputFormType> = ({name, label}) => {
-    // const style = {
-    //     "& .MuiOutlinedInput-root": {
-    //         "&.Mui-focused fieldset": {
-    //             color: "red"
-    //         }
-    //     }
-    // }
+
     const [field, meta] = useField(name)
     return (
         <>
             <TextField
-
-                // focused={true}
-
                 label={label}
                 fullWidth
                 variant={'standard'}

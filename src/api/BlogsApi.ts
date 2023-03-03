@@ -6,7 +6,7 @@ const instance = axios.create ({
     withCredentials: true,
 })
 const config = {
-    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUwNSwiaWF0IjoxNjc3NjgxODQ4LCJleHAiOjE2Nzc3MTc4NDh9.RWIOxWCX01OUZEkdjaqLPEWz2ZYQU8ifFg16X6lAvbs` }
+    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUzMiwiaWF0IjoxNjc3ODM5MzQ4LCJleHAiOjE2Nzc4NzUzNDh9.DsTyy9jvZdGYnuSEGpLWVu44h1ZVfTt5Op4YXVDuEcs` }
 };
 
 export const BlogsApi = {
@@ -18,6 +18,9 @@ export const BlogsApi = {
     },
     createBlog(name: string, description: string, websiteUrl: string) {
         return instance.post(`/blogger/blogs`, {name, description, websiteUrl}, config)
+    },
+    editBlog(name: string, description: string, websiteUrl: string, id:string){
+        return instance.put(`/blogger/blogs/${id}`, {name, description, websiteUrl}, config)
     }
 }
 

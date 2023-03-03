@@ -33,10 +33,25 @@ const addBlog = createAsyncThunk('blogs/addBlogBlogs', async (param:{name:string
         return rejectWithValue(null)
     }
 })
-
+ const editBlog = createAsyncThunk('blogs/editBlog', async (param:{id:string, name: string, description: string, websiteUrl: string}, {
+    dispatch,
+    rejectWithValue
+}) => {
+    debugger
+    dispatch(SetAppStatus({status: 'loading'}))
+    try {
+        const res = await BlogsApi.editBlog(param.name, param.description, param.websiteUrl, param.id)
+        dispatch(SetAppStatus({status: 'succeeded'}))
+        // return param
+    } catch (e) {
+        handleServerNetworkError(e, dispatch)
+        return rejectWithValue(null)
+    }
+})
 export const asyncActions = {
     fetchBlogs,
     addBlog,
+    editBlog
 
 }
 const initialState = {} as BlogsResponseType
@@ -53,7 +68,6 @@ export const slice = createSlice({
                 state.items.push(action.payload.blog)
             }
         });
-
     },
 })
 export const blogsReducer = slice.reducer

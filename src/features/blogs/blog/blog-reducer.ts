@@ -3,7 +3,7 @@ import {SetAppStatus} from "../../../app/app-reducer";
 import {BlogsApi, BlogType} from "../../../api/BlogsApi";
 import {handleServerNetworkError} from "../../../utils/handleServerNetworkError";
 
-const fetchBlog = createAsyncThunk('blogs/fetchBlog', async (param:{id:string}, {
+const fetchBlog = createAsyncThunk('blog/fetchBlog', async (param:{id:string}, {
     dispatch,
     rejectWithValue
 }) => {
@@ -18,6 +18,7 @@ const fetchBlog = createAsyncThunk('blogs/fetchBlog', async (param:{id:string}, 
         return rejectWithValue(null)
     }
 })
+
 export const asyncActions = {
     fetchBlog
 }
@@ -31,6 +32,7 @@ export const slice = createSlice({
         builder.addCase(fetchBlog.fulfilled, (state, action)=>{
             return action.payload.blog
         });
+
     }
 })
 export const blogReducer = slice.reducer
