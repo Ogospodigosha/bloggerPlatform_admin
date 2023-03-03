@@ -6,7 +6,7 @@ import {BlogsPage} from "./features/blogs/blogsPage/BlogsPage";
 import {Layout} from "./components/layout/Layout";
 import {AddBlogPage} from "./features/blogs/addBlogPage/AddBlogPage";
 import {EditBlogPage} from "./features/blogs/editBlogPage/EditBlogPage";
-import {PostsPage} from "./features/posts/PostsPage";
+import {PostsPage} from "./features/posts/postsPage/PostsPage";
 
 
 

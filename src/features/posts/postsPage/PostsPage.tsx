@@ -1,6 +1,8 @@
 import React from 'react';
 import {CssBaseline} from "@mui/material";
-import {BlogsContent} from "../blogs/blogsPage/blogsContent/BlogsContent";
+import {PostsContent} from "./postsContent/PostsContent";
+
+
 
 export const PostsPage = () => {
     return (
