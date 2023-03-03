@@ -6,6 +6,7 @@ import {BlogsPage} from "./features/blogs/blogsPage/BlogsPage";
 import {Layout} from "./components/layout/Layout";
 import {AddBlogPage} from "./features/blogs/addBlogPage/AddBlogPage";
 import {EditBlogPage} from "./features/blogs/editBlogPage/EditBlogPage";
+import {PostsPage} from "./features/posts/PostsPage";
 
 
 
@@ -17,6 +18,7 @@ function App() {
             <Route path={'/'} element={<Layout/>}>
                 <Route index element={<BlogsPage/>}/>
                 <Route path={'/blogs'} element={<BlogsPage/>}/>
+                <Route path={'/posts'} element={<PostsPage/>}/>
                 <Route path={'/blog/add'} element={<AddBlogPage/>}/>
                 <Route path={'/blog/edit/:blogId'} element={<EditBlogPage/>}/>
             </Route>
