@@ -1,0 +1,32 @@
+.body {
+    color: #1A1718;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-bottom: 42px;
+}
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.no {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: white;
+    border: 1px solid #F8346B;
+    width: 124px;
+    text-align: center;
+    background-color: #F8346B;
+    cursor: pointer;
+}
+.yes {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: #F8346B;
+    border: 1px solid #F8346B;
+    width: 124px;
+    text-align: center;
+    cursor: pointer;
+}

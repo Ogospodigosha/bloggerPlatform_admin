@@ -1,5 +1,5 @@
 import {Divider, IconButton, ListItem, ListItemAvatar, MenuItem, Menu } from '@mui/material';
-import React from 'react';
+import React, {useState} from 'react';
 
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -7,6 +7,7 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 import s from '../blogsList/BlogList.module.css'
 import {BlogType} from "../../../../api/BlogsApi";
 import {useNavigate} from "react-router-dom";
+import {DeleteModal} from "../../../modals/deleteModal/DeleteModal";
 
 
 
@@ -17,6 +18,7 @@ type PropsType = {
 
 
 export const BlogMenu: React.FC<PropsType> = ({el}) => {
+    const [openModal, setOpenModal] = useState(false)
     const ITEM_HEIGHT = 48;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -33,8 +35,12 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
         debugger
         navigate(`/blog/edit/${id}`)
     }
+    const deleteBlog = ()=>{
+        setOpenModal(true)
+    }
     return (
         <>
+            <DeleteModal openModal={openModal} setOpenModal={setOpenModal}/>
         <ListItem alignItems="flex-start" key={el.id}  >
             <ListItemAvatar>
                 <div className={s.avatar}><img className={s.img} /></div>
@@ -77,7 +83,7 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
                                 horizontal: 'right',
                             }}
                         >
-                            <MenuItem >
+                            <MenuItem onClick={deleteBlog}>
                                 <div style={{display:'flex'}}>
                                     <DeleteOutlineIcon fontSize={'medium'} style={{marginRight: '17px'}}/>
                                     <div>Delete</div>
