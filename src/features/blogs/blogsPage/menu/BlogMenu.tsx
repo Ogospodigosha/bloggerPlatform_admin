@@ -19,6 +19,7 @@ type PropsType = {
 
 export const BlogMenu: React.FC<PropsType> = ({el}) => {
     const [openModal, setOpenModal] = useState(false)
+    const [deleteId, setDeleteId] = useState('')
     const ITEM_HEIGHT = 48;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -35,12 +36,13 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
         debugger
         navigate(`/blog/edit/${id}`)
     }
-    const deleteBlog = ()=>{
+    const deleteBlog = (id: string)=>{
+        setDeleteId(id)
         setOpenModal(true)
     }
     return (
         <>
-            <DeleteModal openModal={openModal} setOpenModal={setOpenModal}/>
+            <DeleteModal openModal={openModal} setOpenModal={setOpenModal} deleteId={deleteId}/>
         <ListItem alignItems="flex-start" key={el.id}  >
             <ListItemAvatar>
                 <div className={s.avatar}><img className={s.img} /></div>
@@ -83,7 +85,7 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
                                 horizontal: 'right',
                             }}
                         >
-                            <MenuItem onClick={deleteBlog}>
+                            <MenuItem onClick={()=>deleteBlog(el.id)}>
                                 <div style={{display:'flex'}}>
                                     <DeleteOutlineIcon fontSize={'medium'} style={{marginRight: '17px'}}/>
                                     <div>Delete</div>

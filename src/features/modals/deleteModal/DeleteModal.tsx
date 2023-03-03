@@ -5,9 +5,10 @@ import s from './DeleteModal.module.css'
 type PropsType = {
     setOpenModal: (openModal: boolean)=>void
     openModal: boolean
+    deleteId: string
 }
 
-export const DeleteModal:React.FC<PropsType> = ({openModal, setOpenModal}) => {
+export const DeleteModal:React.FC<PropsType> = ({openModal, setOpenModal, deleteId}) => {
     const deleteBlog =()=>{
 
     }

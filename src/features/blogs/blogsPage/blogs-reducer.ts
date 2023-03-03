@@ -48,6 +48,21 @@ const addBlog = createAsyncThunk('blogs/addBlogBlogs', async (param:{name:string
         return rejectWithValue(null)
     }
 })
+const removeBlog = createAsyncThunk('blogs/removeBlog', async (param:{id:string}, {
+    dispatch,
+    rejectWithValue
+}) => {
+    debugger
+    dispatch(SetAppStatus({status: 'loading'}))
+    try {
+        const res = await BlogsApi.deleteBlog(param.id)
+        dispatch(SetAppStatus({status: 'succeeded'}))
+        // return param
+    } catch (e) {
+        handleServerNetworkError(e, dispatch)
+        return rejectWithValue(null)
+    }
+})
 export const asyncActions = {
     fetchBlogs,
     addBlog,
