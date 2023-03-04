@@ -1,18 +1,22 @@
 import React from 'react';
-import {formValidate} from "../../../../utils/formValidate";
 import {Form, Formik} from "formik";
 import {Button, FormGroup} from "@mui/material";
 import {NameInputForm} from "../../../../components/nameInputForm/NameInputForm";
-import {WebsiteInputForm} from "../../../../components/websiteInputForm/WebsiteInputForm";
 import {DescriptionInputForm} from "../../../../components/descriptionInputForm/DescriptionInputForm";
 import {useSelector} from "react-redux";
 import {selectBlogs} from "../../../blogs/selectors";
 import {BlogInputForm} from "./BlogInputForm";
 import {formPostValidate} from "../../../../utils/formPostValidate";
+import {BlogType} from "../../../../api/BlogsApi";
 
-export const AddPostForm = () => {
-    const blogs = useSelector(selectBlogs)
-    console.log(blogs.items)
+
+type PropsType = {
+    blogs: BlogType[]
+}
+
+export const AddPostForm: React.FC<PropsType> = ({blogs}) => {
+    // const blogs = useSelector(selectBlogs)
+    // console.log(blogs.items)
     const initialValues = {name: '', blog:'', description: ''}
     return (
         <>
@@ -45,7 +49,7 @@ export const AddPostForm = () => {
                             <NameInputForm name={'name'} label="name"  />
                         </div>
                         <div style={{ position: 'relative', marginBottom:'24px' }}>
-                            <BlogInputForm name={'blog'} label={'blog'}  />
+                            <BlogInputForm name={'blog'} label={'blog'} blogs={blogs}  />
                         </div>
                         <div style={{ position: 'relative', marginBottom:'24px' }}>
                             <DescriptionInputForm
