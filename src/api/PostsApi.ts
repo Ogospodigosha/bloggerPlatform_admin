@@ -1,6 +1,8 @@
 import axios from "axios"
 
-
+const config = {
+    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU2LCJpYXQiOjE2Nzc5MzE5MjYsImV4cCI6MTY3Nzk2NzkyNn0.ikDL4CJopwMMxLWQm_e0OmNlA1K4p2m0I-P_V7TLBiU` }
+};
 const instance = axios.create ({
     baseURL: 'https://blogs-nest-torm.vercel.app/',
     withCredentials: true,
@@ -14,6 +16,9 @@ export const PostsApi = {
     },
     getPost(id: string){
         return instance.get(`posts/${id}`)
+    },
+    removePost(blogId: string, postId: string) {
+        return instance.delete(`/blogger/blogs/${blogId}/posts/${postId}`, config)
     }
 }
 export type ExtendedLikesInfoType = {

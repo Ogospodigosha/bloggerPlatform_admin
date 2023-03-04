@@ -6,12 +6,14 @@ import {IconButton, Menu, MenuItem} from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import {DeletePostModal} from "../../../../modals/deletePostModal/DeletePostModal";
 
 type PropsType = {
     el: PostType
 }
 
 export const Post:React.FC<PropsType> = ({el}) => {
+    const [deleteId, setDeleteId] = useState('')
     const [openModal, setOpenModal] = useState(false)
     const ITEM_HEIGHT = 48;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -24,7 +26,7 @@ export const Post:React.FC<PropsType> = ({el}) => {
         event.stopPropagation()
         setAnchorEl(null);
     };
-    const deleteBlog = (id: string)=>{
+    const deletePost = (id: string)=>{
         // setDeleteId(id)
         setOpenModal(true)
     }
@@ -34,6 +36,7 @@ export const Post:React.FC<PropsType> = ({el}) => {
     }
     return (
         <div className={s.card}>
+            <DeletePostModal setOpenModal={setOpenModal} openModal={openModal}  deleteId={deleteId}/>
             <img className={s.img}/>
             <div className={s.flex}>
                 <img className={s.smallImg}/>
@@ -84,7 +87,7 @@ export const Post:React.FC<PropsType> = ({el}) => {
                             horizontal: 'right',
                         }}
                     >
-                        <MenuItem onClick={()=>deleteBlog(el.id)}>
+                        <MenuItem onClick={()=>deletePost(el.id)}>
                             <div style={{display:'flex'}}>
                                 <DeleteOutlineIcon fontSize={'medium'} style={{marginRight: '17px'}}/>
                                 <div>Delete</div>

@@ -1,27 +1,27 @@
 import React from 'react';
-import {BasicModal} from "../basicModal/BasicModal"
-import s from './DeleteModal.module.css'
 import {useActions} from "../../../utils/useAction";
 import {AsyncBlogsActions} from "../../blogs";
+import {BasicModal} from "../basicModal/BasicModal";
+import s from "../deleteModal/DeleteModal.module.css";
+import {AsyncPostsActions} from "../../posts";
 
 type PropsType = {
     setOpenModal: (openModal: boolean)=>void
     openModal: boolean
     deleteId: string
 }
-
-export const DeleteModal:React.FC<PropsType> = ({openModal, setOpenModal, deleteId}) => {
-    const {removeBlog} = useActions(AsyncBlogsActions)
-    const deleteBlog =()=>{
-        removeBlog({id:deleteId})
+export const DeletePostModal:React.FC<PropsType> = ({openModal, setOpenModal, deleteId}) => {
+    const {} = useActions(AsyncPostsActions)
+    const deletePost =()=>{
+        // removeBlog({id:deleteId})
         setOpenModal(false)
     }
     const cancelHandler =()=>{
         setOpenModal(false)
     }
     return (
-        <BasicModal setOpenModal={setOpenModal} openModal={openModal} title={'Delete a blog'}>
-            <div className={s.body}>Are you sure you want to delete this blog?</div>
+        <BasicModal setOpenModal={setOpenModal} openModal={openModal} title={'Delete a post'}>
+            <div className={s.body}>Are you sure you want to delete this post?</div>
             <div className={s.flex}>
                 <div>
                     <div
@@ -34,7 +34,7 @@ export const DeleteModal:React.FC<PropsType> = ({openModal, setOpenModal, delete
                 <div>
                     <div
                         className={s.yes}
-                        onClick={deleteBlog}
+                        onClick={deletePost}
                     >
                         Yes
                     </div>
