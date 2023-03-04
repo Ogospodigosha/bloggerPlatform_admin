@@ -50,7 +50,7 @@ export const BlogMenu: React.FC<PropsType> = ({el}) => {
             <div className={s.div}>
                 <div style={{display:'flex', alignItems:'center', justifyContent: 'space-between'}}>
                     <div className={s.blogName}>{el.name}</div>
-                    <div>
+                    <div >
                         <IconButton
 
                             id="long-button"

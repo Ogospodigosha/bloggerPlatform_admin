@@ -11,6 +11,9 @@
 }
 .flex {
     display: flex;
+    align-items: flex-start;
+    /*justify-content: space-around;*/
+
 }
 .smallImg{
     width: 48px;
@@ -26,6 +29,7 @@
     line-height: 24px;
     margin-bottom: 1px;
     cursor: pointer;
+    /*margin-right: 100%;*/
 }
 .shortDescription {
     color: #797476;
