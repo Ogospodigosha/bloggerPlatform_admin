@@ -13,7 +13,8 @@ type PropsType = {
 }
 
 export const Post:React.FC<PropsType> = ({el}) => {
-    const [deleteId, setDeleteId] = useState('')
+    const [postId, setPostId] = useState('')
+    const [blogId, setBlogId] = useState('')
     const [openModal, setOpenModal] = useState(false)
     const ITEM_HEIGHT = 48;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -26,8 +27,9 @@ export const Post:React.FC<PropsType> = ({el}) => {
         event.stopPropagation()
         setAnchorEl(null);
     };
-    const deletePost = (id: string)=>{
-        // setDeleteId(id)
+    const deletePost = (postId: string, blogId: string)=>{
+        setBlogId(blogId)
+        setPostId(postId)
         setOpenModal(true)
     }
     const onclickHandler = (id: string)=>{
@@ -36,7 +38,7 @@ export const Post:React.FC<PropsType> = ({el}) => {
     }
     return (
         <div className={s.card}>
-            <DeletePostModal setOpenModal={setOpenModal} openModal={openModal}  deleteId={deleteId}/>
+            <DeletePostModal setOpenModal={setOpenModal} openModal={openModal}  postId={postId} blogId={blogId} />
             <img className={s.img}/>
             <div className={s.flex}>
                 <img className={s.smallImg}/>
@@ -87,7 +89,7 @@ export const Post:React.FC<PropsType> = ({el}) => {
                             horizontal: 'right',
                         }}
                     >
-                        <MenuItem onClick={()=>deletePost(el.id)}>
+                        <MenuItem onClick={()=>deletePost(el.id, el.blogId)}>
                             <div style={{display:'flex'}}>
                                 <DeleteOutlineIcon fontSize={'medium'} style={{marginRight: '17px'}}/>
                                 <div>Delete</div>

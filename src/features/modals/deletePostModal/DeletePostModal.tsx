@@ -1,19 +1,21 @@
 import React from 'react';
 import {useActions} from "../../../utils/useAction";
-import {AsyncBlogsActions} from "../../blogs";
 import {BasicModal} from "../basicModal/BasicModal";
 import s from "../deleteModal/DeleteModal.module.css";
-import {AsyncPostsActions} from "../../posts";
+import {AsyncPostsActions, PostsSelector} from "../../posts";
+
 
 type PropsType = {
     setOpenModal: (openModal: boolean)=>void
     openModal: boolean
-    deleteId: string
+    blogId: string
+    postId: string
 }
-export const DeletePostModal:React.FC<PropsType> = ({openModal, setOpenModal, deleteId}) => {
-    const {} = useActions(AsyncPostsActions)
+export const DeletePostModal:React.FC<PropsType> = ({openModal, setOpenModal, postId, blogId}) => {
+    const {removePost} = useActions(AsyncPostsActions)
+
     const deletePost =()=>{
-        // removeBlog({id:deleteId})
+      removePost({blogId: blogId, postId:postId})
         setOpenModal(false)
     }
     const cancelHandler =()=>{

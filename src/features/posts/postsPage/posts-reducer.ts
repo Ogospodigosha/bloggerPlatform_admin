@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { SetAppStatus } from "../../../app/app-reducer";
 import {PostsApi, PostsResponseType} from "../../../api/PostsApi";
+import {handleServerNetworkError} from "../../../utils/handleServerNetworkError";
 
 
 
@@ -19,6 +20,7 @@ const fetchPostsById = createAsyncThunk('posts/fetchPostsById', async (param:{id
         dispatch(SetAppStatus({status: 'succeeded'}))
         return {posts: res.data}
     } catch (e) {
+        handleServerNetworkError(e, dispatch)
         return rejectWithValue(null)
     }
 })
@@ -33,6 +35,7 @@ const fetchAllPosts = createAsyncThunk('posts/fetchAllPosts', async (param, {
         dispatch(SetAppStatus({status: 'succeeded'}))
         return {posts: res.data}
     } catch (e) {
+        handleServerNetworkError(e, dispatch)
         return rejectWithValue(null)
     }
 })
@@ -47,12 +50,14 @@ const removePost = createAsyncThunk('posts/removePost', async (param:{blogId:str
         dispatch(SetAppStatus({status: 'succeeded'}))
         dispatch(fetchAllPosts())
     } catch (e) {
+        handleServerNetworkError(e, dispatch)
         return rejectWithValue(null)
     }
 })
 export const asyncActions ={
     fetchPostsById,
-    fetchAllPosts
+    fetchAllPosts,
+    removePost
 }
 
 export const slice = createSlice({
