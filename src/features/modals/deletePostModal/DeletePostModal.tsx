@@ -2,7 +2,7 @@ import React from 'react';
 import {useActions} from "../../../utils/useAction";
 import {BasicModal} from "../basicModal/BasicModal";
 import s from "../deleteModal/DeleteModal.module.css";
-import {AsyncPostsActions, PostsSelector} from "../../posts";
+import {AsyncPostsActions} from "../../posts";
 
 
 type PropsType = {

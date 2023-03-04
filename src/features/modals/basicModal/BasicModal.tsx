@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {ReactNode} from 'react'
 
-import { IconButton } from '@mui/material'
+import {CssBaseline, IconButton} from '@mui/material'
 import Modal from '@mui/material/Modal'
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -29,8 +29,8 @@ export const BasicModal: React.FC<PropsType> = ({ setOpenModal, openModal, child
     }
 
     return (
-        <Modal open={openModal} onClose={handleClose}>
-            <div className={s.main}>
+        <Modal open={openModal} onClose={handleClose} >
+            <div className={s.main} style={{width: title === 'Add post' ? '526px': '395px'}}>
                 <div className={s.header}>
                     <div className={s.title}>{title}</div>
                     <IconButton onClick={handleClose}>
