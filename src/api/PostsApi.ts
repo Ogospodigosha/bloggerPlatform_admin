@@ -19,6 +19,9 @@ export const PostsApi = {
     },
     removePost(blogId: string, postId: string) {
         return instance.delete(`/blogger/blogs/${blogId}/posts/${postId}`, config)
+    },
+    addPost(blogId: string, title: string, shortDescription: string, content: string){
+        return instance.post(`/blogger/blogs/${blogId}`, {title, shortDescription, content, blogId}, config)
     }
 }
 export type ExtendedLikesInfoType = {
