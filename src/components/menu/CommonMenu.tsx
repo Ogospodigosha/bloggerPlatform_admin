@@ -14,9 +14,10 @@ type PropsType = {
     editItemProps?: (id: string)=>void
     deletePostProps?: (postId: string, blogId: string)=>void
     blogId?: string
+    editPostProps?: (id: string)=>void
 }
 
-export const CommonMenu:React.FC<PropsType> = ({el, deleteItemProps, editItemProps, deletePostProps, blogId}) => {
+export const CommonMenu:React.FC<PropsType> = ({el, deleteItemProps, editItemProps, deletePostProps, blogId, editPostProps}) => {
     const ITEM_HEIGHT = 48;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -42,6 +43,9 @@ export const CommonMenu:React.FC<PropsType> = ({el, deleteItemProps, editItemPro
     const editItem =(id: string)=>{
         if (editItemProps) {
             editItemProps(id)
+        }
+        if(editPostProps){
+            editPostProps(id)
         }
     }
     return (
