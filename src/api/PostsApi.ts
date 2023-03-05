@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const config = {
-    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU2LCJpYXQiOjE2Nzc5MzE5MjYsImV4cCI6MTY3Nzk2NzkyNn0.ikDL4CJopwMMxLWQm_e0OmNlA1K4p2m0I-P_V7TLBiU` }
+    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMywiaWF0IjoxNjc4MDQ1MTE5LCJleHAiOjE2NzgwODExMTl9.LUcca9M-eDrZRpET_T5bH4sbigIE_rLnYN3ALx3eVqE` }
 };
 const instance = axios.create ({
     baseURL: 'https://blogs-nest-torm.vercel.app/',

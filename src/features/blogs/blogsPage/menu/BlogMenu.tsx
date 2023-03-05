@@ -1,10 +1,11 @@
-import {Divider, IconButton, ListItem, ListItemAvatar } from '@mui/material';
+import {Divider, ListItem, ListItemAvatar } from '@mui/material';
 import React, {useState} from 'react';
 import s from '../blogsList/BlogList.module.css'
 import {BlogType} from "../../../../api/BlogsApi";
 import {useNavigate} from "react-router-dom";
 import {DeleteModal} from "../../../modals/deleteModal/DeleteModal";
-import {CommonMenu} from "../../../../components/menu/Menu";
+import {CommonMenu} from "../../../../components/menu/CommonMenu";
+
 
 
 

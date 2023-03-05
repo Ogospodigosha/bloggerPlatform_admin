@@ -16,6 +16,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 export const  CustomizedSnackbars = () => {
     const dispatch = useAppDispatch()
+    debugger
     let error = useSelector<AppRootState, null| string>(state => state.app.error)
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
         if (reason === "ckickaway") {

@@ -4,15 +4,19 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import {BlogType} from "../../api/BlogsApi";
+import {PostType} from "../../api/PostsApi";
+
 
 
 type PropsType = {
-    el: BlogType
-    deleteItemProps: (id: string)=>void
-    editItemProps: (id: string)=>void
+    el: PostType| BlogType
+    deleteItemProps?: (id: string)=>void
+    editItemProps?: (id: string)=>void
+    deletePostProps?: (postId: string, blogId: string)=>void
+    blogId?: string
 }
 
-export const CommonMenu:React.FC<PropsType> = ({el, deleteItemProps, editItemProps}) => {
+export const CommonMenu:React.FC<PropsType> = ({el, deleteItemProps, editItemProps, deletePostProps, blogId}) => {
     const ITEM_HEIGHT = 48;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -25,10 +29,20 @@ export const CommonMenu:React.FC<PropsType> = ({el, deleteItemProps, editItemPro
         setAnchorEl(null);
     };
     const deleteItem = (id: string)=>{
-        deleteItemProps(id)
+        if (deleteItemProps) {
+            deleteItemProps(id)
+        }
+        if (blogId) {
+            if (deletePostProps) {
+                deletePostProps(id, blogId)
+            }
+        }
+
     }
     const editItem =(id: string)=>{
-        editItemProps(id)
+        if (editItemProps) {
+            editItemProps(id)
+        }
     }
     return (
         <div >
