@@ -11,7 +11,13 @@ export const handleServerNetworkError = (e: any, dispatch: ErrorUtilsDispatchTyp
 
     dispatch(SetAppStatus({status: 'failed'}))
     // @ts-ignore
-    dispatch(SetAppError(error.message ? {error: error.response.data.errorsMessages[0].message} : {error: 'Some error occurred'}))
+    if (error.response){
+        // @ts-ignore
+        dispatch(SetAppError(error.message ? {error: error.response.data.errorsMessages[0].message} : {error: 'Some error occurred'}))
+    }
+    if (error.message){
+        dispatch(SetAppError({error: error.message}))
+    }
 
 }
 
