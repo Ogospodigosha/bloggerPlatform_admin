@@ -7,6 +7,7 @@ type PropsType = {
     openModal:boolean
 }
 export const EditPostForm:React.FC<PropsType> = ({setOpenModal, el}) => {
+    const initialValues = {name: '', blog:'', description: ''}
     return (
         <div>
 

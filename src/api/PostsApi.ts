@@ -22,6 +22,9 @@ export const PostsApi = {
     },
     addPost(blogId: string, title: string, shortDescription: string, content: string){
         return instance.post(`/blogger/blogs/${blogId}/posts`, {title, shortDescription, content, blogId}, config)
+    },
+    updatePost(blogId: string, title: string, shortDescription: string, content: string, postId:string) {
+        return instance.post(`/blogger/blogs/${blogId}/posts/${postId}`, {title, shortDescription, content, blogId}, config)
     }
 }
 export type ExtendedLikesInfoType = {
