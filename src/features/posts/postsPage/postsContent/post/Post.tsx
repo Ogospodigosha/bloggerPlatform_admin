@@ -4,9 +4,9 @@ import s from './Post.module.css'
 import {convertDataFormat} from "../../../../../utils/convertDataFormat";
 import {DeletePostModal} from "../../../../modals/deletePostModal/DeletePostModal";
 import {CommonMenu} from "../../../../../components/menu/CommonMenu";
-import {useNavigate} from "react-router-dom";
 import {CssBaseline} from "@mui/material";
-import {CustomizedSnackbars} from "../../../../../components/customizedSnackbars/CustomizedSnackbars";
+import {EditPostModal} from "../../../../modals/editPostModal/EditPostModal";
+
 
 type PropsType = {
     el: PostType
@@ -22,14 +22,15 @@ export const Post:React.FC<PropsType> = ({el}) => {
         setPostId(postId)
         setOpenModal(true)
     }
-    // const onclickHandler = (id: string)=>{
-    //     debugger
-    //     navigate(`/blog/edit/${id}`)
-    // }
+    const onclickHandler = (postId: string)=>{
+        setOpenModal(true)
+
+    }
     return (
         <div className={s.card}>
             <CssBaseline/>
             <DeletePostModal setOpenModal={setOpenModal} openModal={openModal}  postId={postId} blogId={blogId} />
+            <EditPostModal el={el}   setOpenModal={setOpenModal} openModal={openModal}/>
             <img className={s.img}/>
             <div className={s.flex}>
                 <img className={s.smallImg}/>
@@ -44,7 +45,7 @@ export const Post:React.FC<PropsType> = ({el}) => {
                         {el.createdAt !== undefined && convertDataFormat(el.createdAt)}
                     </div>
                 </div>
-                <CommonMenu el={el} deletePostProps={deletePost} blogId={el.blogId} />
+                <CommonMenu el={el} deletePostProps={deletePost} blogId={el.blogId} editPostProps={onclickHandler}/>
             </div>
         </div>
     );
