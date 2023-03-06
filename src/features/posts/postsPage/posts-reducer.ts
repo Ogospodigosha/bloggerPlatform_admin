@@ -54,7 +54,7 @@ const removePost = createAsyncThunk('posts/removePost', async (param:{blogId:str
         return rejectWithValue(null)
     }
 })
-const addPost = createAsyncThunk('posts/addPostPost', async (param:{blogId:string, title:string, shortDescription: string, content: string}, {
+const addPost = createAsyncThunk('posts/addPost', async (param:{blogId:string, title:string, shortDescription: string, content: string}, {
     dispatch,
     rejectWithValue
 }) => {
@@ -69,11 +69,27 @@ const addPost = createAsyncThunk('posts/addPostPost', async (param:{blogId:strin
         return rejectWithValue(null)
     }
 })
+const editPost = createAsyncThunk('posts/editPost', async (param:{blogId:string, title:string, shortDescription: string, content: string, postId:string}, {
+    dispatch,
+    rejectWithValue
+}) => {
+    debugger
+    dispatch(SetAppStatus({status: 'loading'}))
+    try {
+        const res = await PostsApi.updatePost(param.blogId, param.title, param.shortDescription, param.content, param.postId)
+        dispatch(SetAppStatus({status: 'succeeded'}))
+        dispatch(fetchAllPosts())
+    } catch (e) {
+        handleServerNetworkError(e, dispatch)
+        return rejectWithValue(null)
+    }
+})
 export const asyncActions ={
     fetchPostsById,
     fetchAllPosts,
     removePost,
-    addPost
+    addPost,
+    editPost
 }
 
 export const slice = createSlice({
