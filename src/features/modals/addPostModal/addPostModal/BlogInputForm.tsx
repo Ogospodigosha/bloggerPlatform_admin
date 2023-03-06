@@ -9,10 +9,15 @@ type PropsType = {
     name:string
     label: string
     blogs: BlogType[]
+    changeBlogId: (id:string)=>void
 }
 
-export const BlogInputForm:React.FC<PropsType> = ({label, name, blogs}) => {
+export const BlogInputForm:React.FC<PropsType> = ({label, name, blogs, changeBlogId}) => {
+
     const [field, meta] = useField(name)
+    const onClickHandler = (blogId: string)=>{
+        changeBlogId(blogId)
+    }
     return (
         <>
 
@@ -25,7 +30,7 @@ export const BlogInputForm:React.FC<PropsType> = ({label, name, blogs}) => {
                         {...field}
                     >
                         {
-                            blogs && blogs.map((el) =><MenuItem value={el.name}>{el.name}</MenuItem>)
+                            blogs && blogs.map((el) =><MenuItem value={el.name} onClick={()=>onClickHandler(el.id)}>{el.name}</MenuItem>)
                         }
                         {/*<MenuItem value={"1"}>Ten</MenuItem>*/}
                         {/*<MenuItem value={"2"}>Twenty</MenuItem>*/}

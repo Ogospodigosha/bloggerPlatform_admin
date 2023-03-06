@@ -24,7 +24,7 @@ export const PostsContent = () => {
     },[])
     return (
         <Box component="main" sx={{flexGrow: 1, p: 3, backgroundColor: "#FAF7F8", minHeight: "100vh"}} className={s.box}>
-            <AddPostModal openModal={openModal} setOpenModal={setOpenModal} blogs={blogs.items}/>
+            <AddPostModal openModal={openModal} setOpenModal={setOpenModal} blogs={blogs.items} />
             <Toolbar/>
             <div className={s.header}>Posts</div>
             <Divider sx={{marginBottom: '23px'}}/>

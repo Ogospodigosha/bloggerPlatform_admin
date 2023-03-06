@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const config = {
-    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMywiaWF0IjoxNjc4MDQ1MTE5LCJleHAiOjE2NzgwODExMTl9.LUcca9M-eDrZRpET_T5bH4sbigIE_rLnYN3ALx3eVqE` }
+    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3ODExNDE5NCwiZXhwIjoxNjc4MTUwMTk0fQ.vN0FGhHR5ZHwdkIPidPlUGQekFmYo7FOpM7MKbeiFIo` }
 };
 const instance = axios.create ({
     baseURL: 'https://blogs-nest-torm.vercel.app/',
@@ -21,7 +21,7 @@ export const PostsApi = {
         return instance.delete(`/blogger/blogs/${blogId}/posts/${postId}`, config)
     },
     addPost(blogId: string, title: string, shortDescription: string, content: string){
-        return instance.post(`/blogger/blogs/${blogId}`, {title, shortDescription, content, blogId}, config)
+        return instance.post(`/blogger/blogs/${blogId}/posts`, {title, shortDescription, content, blogId}, config)
     }
 }
 export type ExtendedLikesInfoType = {

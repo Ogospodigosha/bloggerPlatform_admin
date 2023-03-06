@@ -16,7 +16,7 @@ export const AddPostModal:React.FC<PropsType> = ({openModal, setOpenModal, blogs
     return (
         <BasicModal setOpenModal={setOpenModal} openModal={openModal} title={'Add post'}>
             <div style={{width:'108px', height: '108px', border: '1px solid black', marginBottom:'24px'}}></div>
-            <AddPostForm blogs={blogs}/>
+            <AddPostForm blogs={blogs} setOpenModal={setOpenModal}/>
         </BasicModal>
     );
 };

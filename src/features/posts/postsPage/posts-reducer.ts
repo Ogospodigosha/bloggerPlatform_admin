@@ -54,14 +54,14 @@ const removePost = createAsyncThunk('posts/removePost', async (param:{blogId:str
         return rejectWithValue(null)
     }
 })
-const addPost = createAsyncThunk('posts/addPostPost', async (param:{blogId:string, postId:string}, {
+const addPost = createAsyncThunk('posts/addPostPost', async (param:{blogId:string, title:string, shortDescription: string, content: string}, {
     dispatch,
     rejectWithValue
 }) => {
     debugger
     dispatch(SetAppStatus({status: 'loading'}))
     try {
-        // const res = await PostsApi.addPost(param.blogId, param.postId)
+        const res = await PostsApi.addPost(param.blogId, param.title, param.shortDescription, param.content)
         dispatch(SetAppStatus({status: 'succeeded'}))
         dispatch(fetchAllPosts())
     } catch (e) {
@@ -72,7 +72,8 @@ const addPost = createAsyncThunk('posts/addPostPost', async (param:{blogId:strin
 export const asyncActions ={
     fetchPostsById,
     fetchAllPosts,
-    removePost
+    removePost,
+    addPost
 }
 
 export const slice = createSlice({

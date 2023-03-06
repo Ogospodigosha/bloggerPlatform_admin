@@ -1,22 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Form, Formik} from "formik";
 import {Button, FormGroup} from "@mui/material";
 import {NameInputForm} from "../../../../components/nameInputForm/NameInputForm";
 import {DescriptionInputForm} from "../../../../components/descriptionInputForm/DescriptionInputForm";
-import {useSelector} from "react-redux";
-import {selectBlogs} from "../../../blogs/selectors";
 import {BlogInputForm} from "./BlogInputForm";
 import {formPostValidate} from "../../../../utils/formPostValidate";
 import {BlogType} from "../../../../api/BlogsApi";
+import { useAppDispatch} from "../../../../utils/useAction";
+import {AsyncPostsActions} from "../../../posts";
 
 
 type PropsType = {
     blogs: BlogType[]
+    setOpenModal: (openModal: boolean)=>void
 }
 
-export const AddPostForm: React.FC<PropsType> = ({blogs}) => {
-    // const blogs = useSelector(selectBlogs)
-    // console.log(blogs.items)
+export const AddPostForm: React.FC<PropsType> = ({blogs, setOpenModal}) => {
+    const dispatch = useAppDispatch()
+    const [blogId, setBlogId] = useState('')
+    const changeBlogId =(id: string)=>{
+        setBlogId(id)
+    }
+
     const initialValues = {name: '', blog:'', description: ''}
     return (
         <>
@@ -24,23 +29,19 @@ export const AddPostForm: React.FC<PropsType> = ({blogs}) => {
                     validate={formPostValidate}
                     onSubmit={async (values, actions) => {
                         console.log(values)
-                        // debugger
-                        // if (values.name && values.websiteUrl && values.description) {
-                        //     const thunk = AsyncBlogsActions.addBlog({
-                        //         name: values.name,
-                        //         websiteUrl: values.websiteUrl,
-                        //         description: values.description
-                        //     })
-                        //     const resultAction = await dispatch(thunk)
-                        //     if (AsyncBlogsActions.addBlog.fulfilled.match(resultAction)) {
-                        //         const message = resultAction.payload
-                        //         console.log(message)
-                        //         if (message) {
-                        //             navigate('/blogs')
-                        //         }
-                        //     }
-                        // }
-
+                        if (values.name && values.blog && values.description) {
+                            const thunk = AsyncPostsActions.addPost({
+                                blogId:blogId,
+                                title: values.name,
+                                shortDescription: 'test',
+                                content:values.description
+                            })
+                            const resultAction = await dispatch(thunk)
+                            if (AsyncPostsActions.addPost.fulfilled.match(resultAction)) {
+                                const message = resultAction.payload
+                                setOpenModal(false)
+                            }
+                        }
                     }}
             >
                 <Form>
@@ -49,7 +50,7 @@ export const AddPostForm: React.FC<PropsType> = ({blogs}) => {
                             <NameInputForm name={'name'} label="name"  />
                         </div>
                         <div style={{ position: 'relative', marginBottom:'24px' }}>
-                            <BlogInputForm name={'blog'} label={'blog'} blogs={blogs}  />
+                            <BlogInputForm name={'blog'} label={'blog'} blogs={blogs}  changeBlogId={changeBlogId}/>
                         </div>
                         <div style={{ position: 'relative', marginBottom:'24px' }}>
                             <DescriptionInputForm
