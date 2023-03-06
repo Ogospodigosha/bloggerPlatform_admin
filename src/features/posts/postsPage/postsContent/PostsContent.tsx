@@ -35,7 +35,7 @@ export const PostsContent = () => {
                     marginBottom: '29px'
                 }} onClick={addPost}>Add Post</Button>
             </div>
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex',  flexWrap:'wrap'}}>
                 {
                     posts.items && posts.items.map((el) => <Post el={el} key={el.id}/>)
                 }

@@ -5,6 +5,7 @@ import {convertDataFormat} from "../../../../../utils/convertDataFormat";
 import {DeletePostModal} from "../../../../modals/deletePostModal/DeletePostModal";
 import {CommonMenu} from "../../../../../components/menu/CommonMenu";
 import {useNavigate} from "react-router-dom";
+import {CssBaseline} from "@mui/material";
 
 type PropsType = {
     el: PostType
@@ -26,6 +27,7 @@ export const Post:React.FC<PropsType> = ({el}) => {
     // }
     return (
         <div className={s.card}>
+            <CssBaseline/>
             {/*<CustomizedSnackbars/>*/}
             <DeletePostModal setOpenModal={setOpenModal} openModal={openModal}  postId={postId} blogId={blogId} />
             <img className={s.img}/>
