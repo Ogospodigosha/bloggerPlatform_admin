@@ -30,12 +30,14 @@ export const AddPostForm: React.FC<PropsType> = ({blogs, setOpenModal}) => {
                     onSubmit={async (values, actions) => {
                         console.log(values)
                         if (values.name && values.blog && values.description) {
+                            const shortDescription = values.description.substring(0, 5)
                             const thunk = AsyncPostsActions.addPost({
                                 blogId:blogId,
                                 title: values.name,
-                                shortDescription: 'test',
+                                shortDescription: shortDescription,
                                 content:values.description
                             })
+
                             const resultAction = await dispatch(thunk)
                             if (AsyncPostsActions.addPost.fulfilled.match(resultAction)) {
                                 const message = resultAction.payload

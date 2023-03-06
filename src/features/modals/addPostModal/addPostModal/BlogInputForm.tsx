@@ -32,10 +32,6 @@ export const BlogInputForm:React.FC<PropsType> = ({label, name, blogs, changeBlo
                         {
                             blogs && blogs.map((el) =><MenuItem value={el.name} onClick={()=>onClickHandler(el.id)}>{el.name}</MenuItem>)
                         }
-                        {/*<MenuItem value={"1"}>Ten</MenuItem>*/}
-                        {/*<MenuItem value={"2"}>Twenty</MenuItem>*/}
-                        {/*<MenuItem value={"3"}>Thirty</MenuItem>*/}
-
                     </Select>
                 </FormControl>
             </Box>
