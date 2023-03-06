@@ -30,7 +30,7 @@ export const BasicModal: React.FC<PropsType> = ({ setOpenModal, openModal, child
 
     return (
         <Modal open={openModal} onClose={handleClose} >
-            <div className={s.main} style={{width: title === 'Add post' ? '526px': '395px'}}>
+            <div className={s.main} style={{width: title !== 'Delete a post' ? '526px': '395px'}}>
                 <div className={s.header}>
                     <div className={s.title}>{title}</div>
                     <IconButton onClick={handleClose}>

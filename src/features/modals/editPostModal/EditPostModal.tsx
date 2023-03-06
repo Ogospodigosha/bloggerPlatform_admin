@@ -11,7 +11,7 @@ type PropsType = {
 
 export const EditPostModal:React.FC<PropsType> = ({el,setOpenModal,openModal}) => {
     return (
-        <BasicModal setOpenModal={setOpenModal} openModal={openModal} title={'Add post'}>
+        <BasicModal setOpenModal={setOpenModal} openModal={openModal} title={'Edit post'}>
             <div style={{width:'108px', height: '108px', border: '1px solid black', marginBottom:'24px'}}></div>
             <EditPostForm  setOpenModal={setOpenModal} el={el} openModal={openModal}/>
         </BasicModal>

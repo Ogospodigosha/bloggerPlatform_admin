@@ -16,6 +16,7 @@ export const Post:React.FC<PropsType> = ({el}) => {
     const [postId, setPostId] = useState('')
     const [blogId, setBlogId] = useState('')
     const [openModal, setOpenModal] = useState(false)
+    const [openEditModal, setOpenEditModal] = useState(false)
     // const navigate = useNavigate()
     const deletePost = (postId: string, blogId: string)=>{
         setBlogId(blogId)
@@ -23,14 +24,14 @@ export const Post:React.FC<PropsType> = ({el}) => {
         setOpenModal(true)
     }
     const onclickHandler = (postId: string)=>{
-        setOpenModal(true)
+        setOpenEditModal(true)
 
     }
     return (
         <div className={s.card}>
             <CssBaseline/>
             <DeletePostModal setOpenModal={setOpenModal} openModal={openModal}  postId={postId} blogId={blogId} />
-            <EditPostModal el={el}   setOpenModal={setOpenModal} openModal={openModal}/>
+            <EditPostModal el={el}   setOpenModal={setOpenEditModal} openModal={openEditModal}/>
             <img className={s.img}/>
             <div className={s.flex}>
                 <img className={s.smallImg}/>
